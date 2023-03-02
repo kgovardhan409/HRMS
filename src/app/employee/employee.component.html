@@ -1,0 +1,59 @@
+<div class="container mt-5" *ngIf="!editEmployeeOpened">
+    <button class="btn btn-primary my-3" routerLink="/addEmployee">Add New Employee</button>
+    <h1>Employee List</h1>
+    <div class="row">
+        <div class="">
+            <!-- <ul>
+                <li *ngFor="let employee of employeees">
+                    Name: {{employee.name}}
+                </li>
+            </ul> -->
+            
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Date of Joining</th>
+                        <th>Organization</th>
+                        <th>Salary</th>
+                        <th>DOB</th>
+                        <th>Email ID</th>
+                        <th>Phone Number</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees; let i = index">
+                        <td>{{i+1}}</td>
+                        <td [ngClass]="isEmployeeResigned == employee.name ? 'resigned' : 'not-resigned'">{{employee.name}}</td>
+                        <td>{{employee.joiningDate}}</td>
+                        <td>{{employee.organization}}</td>
+                        <td *ngIf="employee.salary >= 1200000" class="text-success">{{employee.salary}}</td>
+                        <td *ngIf="employee.salary < 1200000" class="text-danger">{{employee.salary}}</td>
+                        <td>{{employee.dob}}</td>
+                        <td>{{employee.emailId}}</td>
+                        <td>{{employee.phoneNumber}}</td>
+                        <td>{{employee.address}}</td>
+                        <td [ngStyle]="{width: isLarge ? '300px': ''}">
+                            <button class="btn btn-primary" (click)="editEmployee(employee)">Edit</button>
+                            <button class="btn btn-success ms-2" routerLink="/viewEmployee/{{employee.id}}">View</button>
+                            <button class="btn btn-danger ms-2">Delete</button>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5" *ngIf="editEmployeeOpened">
+    <div class="row">
+        <app-edit-employee [data]="selectedEmployee"
+        (dataToParent)="receiveDataFromChild($event)"
+    ></app-edit-employee>
+    </div>
+</div>
+
+

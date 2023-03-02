@@ -1,0 +1,74 @@
+
+
+
+<!-- <h1>Home component</h1>
+<p>home works!</p>
+
+<div id="myTitleDiv">
+    {{title}}
+</div>
+
+<p>Number of employees: {{numberOfEmployees}}</p>
+
+<label for="">Enter your organization name</label>
+<input type="text" placeholder="Enter your organization name" [maxLength]="orgMaxLength" [minLength]=""
+readonly disabled >
+
+<div>
+    <img [src]="profileImage" [height]="mysizes" [width]="mysizes" alt="profile image">
+</div>
+
+<div>
+    <button (click)="mymethod($event)" [disabled]="isDisabledButton">Change Image</button>
+</div> -->
+
+
+<!-- DOM Events: click, change, mouseover, mouseleave, mousein, keyup, keypress, input, etc... -->
+
+<!-- Properties: [maxLength]="orgMaxLength" [minLength]="" readonly disabled -->
+
+
+<!-- Data binding -->
+<!-- one way binding
+1. String Interpolation  -> component to view
+2. Property/attribute binding -> component to view .[]
+3. Event binding -> view to component. ()
+
+two way binding  [()]--> 
+<!-- [(ngModel)] -->
+
+<!-- Life Cycle Hooks
+1. ngOnchanges - by using this hook we can get the @Input() Changes - using SimpleChanges.currentValue/prevousValue
+2. ngOnInit - once component intialization this hook will grigger;
+3. ngDoCheck - which will trigger after ngOnInit
+4. ngAfterContentInit - after child components content initlized;
+5. ngAFterContentChecked - after ngAFtercontentInit this will trigger
+6. ngAfterViewInit - this will trigger when view is initilized, we will use this trigger when we work with @viewchild
+7. ngAFterViewChecked - this will trigger after view init.
+8. OnDestroy - you component is completely loaded, you can unsubscribe any api calls.
+               to avoid memory leaks. -->
+
+
+<!-- <div *ngIf="myCondtion">
+    Govardhan
+</div> -->
+
+<!-- 
+Directives
+there are 3 types Directives
+1. Component Directive -  @Component({selector: '', templateUrl:, styleUrls:[]})
+2. Structural Directives - 
+        *ngIf (show/hide the elements), js: style.display = none / block;
+        *ngFor (add multiple elements), js: for loop, loop thorugh the arrays and insert the data in element
+        *ngSwitch (same as js switch) - switchcase.. - we will not use.. 
+3. Behavioural Directives - [ngClass] - conditionally we can add classes
+        and [ngStyle] - conditionally we add styles -->
+
+<!-- Sharing Data between components
+when there is a relation
+1. Parent to Child - @Input(), @ViewChild
+2. Child to parent - @Output()
+
+wnen there is no relation 
+3. Services - i. using locla variable, 2. rxjs - bhehaviour subject
+5. router -->       
