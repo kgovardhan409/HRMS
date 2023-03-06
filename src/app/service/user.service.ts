@@ -1,0 +1,18 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+  constructor(private httpClient: HttpClient) { }
+
+  myApplicationName : string = "Human resource management System";
+
+  getUsers() : Observable<any> {
+    return this.httpClient.get("https://fakestoreapi.com/users");
+  }
+
+}

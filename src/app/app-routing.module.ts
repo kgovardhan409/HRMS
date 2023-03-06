@@ -9,8 +9,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ViewEmployeeComponent } from './view-employee/view-employee.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: '', redirectTo: 'dashboards', pathMatch: 'full'},
+  {path: 'dashboards', component: DashboardComponent},
   {path: 'employee', component: EmployeeComponent},
   {path: 'addEmployee', component: NewEmployeeComponent},
   {path: 'profile', component: ProfileComponent},

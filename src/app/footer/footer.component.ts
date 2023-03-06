@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
+
+  name: string = '';
+
+  constructor(private userService: UserService){
+    this.name = userService.myApplicationName;
+  }
+
+
 
 }
