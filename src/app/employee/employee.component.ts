@@ -23,12 +23,25 @@ export class EmployeeComponent {
 
   employees: Employee[] = [];
 
+  responseStatusFailure = false;
+
   constructor(private employeeService: EmployeeService){
 
   }
 
   ngOnInit(){
-    this.employees = this.employeeService.employees;
+    // this.employees = this.employeeService.employees;
+
+    this.employeeService.getEmployees().subscribe( (response) => {
+      if(response.status == "success"){
+        this.employees = response.data;
+      }
+    } ,
+   (error: any) => {
+    console.log("error: ", error);
+    this.responseStatusFailure = true;
+   }
+    )
   }
 
 

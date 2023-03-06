@@ -72,3 +72,27 @@ when there is a relation
 wnen there is no relation 
 3. Services - i. using locla variable, 2. rxjs - bhehaviour subject
 5. router -->       
+
+
+Step to Call an API's
+1. import HttpClientModule in app module in imports section
+2. in you service constructor import HttpClient
+3. create a method in your service
+4. change method to an rxjs Observable
+5. return http.get (post, delete, update, get)
+6. to use this service method in our component you have to import service in component constructor
+7. just call an service method and subscribe to an observable to get and assign data in your component.
+
+methods
+get - to get the data from api
+post - to send the data and receive back data from api
+delete - to delete the data from db
+update - to update data in our db
+
+RxJs - Reactive Extension of Java Script -- Observable and operators to work with asynchrnous api calls.
+
+status codes 
+200 - success codes
+400 - error - not found
+500 - error - internal server error
+300 - error - url redirection - it could not find redirectional url

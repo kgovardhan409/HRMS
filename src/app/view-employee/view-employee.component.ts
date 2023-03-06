@@ -20,7 +20,22 @@ export class ViewEmployeeComponent {
 
   ngOnInit(){
     this.viewEmployeeId = this.myCurrentRoute.snapshot.params['emmployeeId'];
-    this.dataFromService = this.employeeService.employees[this.viewEmployeeId];
+    this.employeeService.getEmployeeByEmployeeId(this.viewEmployeeId).subscribe( resp => {
+      if(resp.status == 'success'){
+        this.dataFromService = resp.data;
+        console.log(this.dataFromService);
+      } else {
+        alert("Some problem with the data");
+      }
+      
+   },
+   (error: any) => {
+    console.log("error: ", error);
+    alert(error.message);
+   }
+   
+    
+    )
   }
   
 }

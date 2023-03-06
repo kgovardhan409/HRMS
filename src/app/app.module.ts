@@ -13,6 +13,7 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ViewEmployeeComponent } from './view-employee/view-employee.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule(
   {
@@ -31,7 +32,8 @@ import { ViewEmployeeComponent } from './view-employee/view-employee.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,12 +2,13 @@
 
 export interface Employee {
     id:number;
-    name: string;
-    dob: string;
-    organization: string;
-    salary: number;
-    address: string;
-    phoneNumber: number;
-    emailId: string;
-    joiningDate: string;
+    employee_name: string;
+    employee_age: number;
+    organization ?: string;
+    employee_salary: number;
+    profile_image ?: string;
+    phoneNumber ?: number;
+    emailId ?: string;
+    joiningDate ?: string;
+    address ?:string;
 }
