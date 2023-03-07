@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { Employee } from '../model/employee.model';
 
 @Injectable({
@@ -70,14 +70,31 @@ export class EmployeeService {
 
   getEmployeeByIdUrl: string = "https://dummy.restapiexample.com/api/v1/employee/";
 
+  deleteUrl: string = "https://dummy.restapiexample.com/api/v1/delete/";
+
+  updateEmployeeUrl:string = "https://dummy.restapiexample.com/api/v1/update/";
+
   constructor(private http: HttpClient) { }
 
-  getEmployees(): Observable<any> {
+  getEmployees(): Observable<any>{
       return this.http.get(this.getEmployeesUrl);
+      // .pipe(
+        // catchError( (error: any) => {
+        //   console.log(error);
+        // })
+      // )
   }
 
   getEmployeeByEmployeeId(employeeId: any): Observable<any>{
     return this.http.get(this.getEmployeeByIdUrl+employeeId)
+  }
+
+  deleteEmployee(id: number): Observable<any>{
+    return this.http.delete(this.deleteUrl+id);
+  }
+
+  updateEmployee(id: number, employee: any): Observable<any> {
+    return this.http.put(this.updateEmployeeUrl+id, employee);
   }
 
 }

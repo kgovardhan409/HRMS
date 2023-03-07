@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { Employee } from '../model/employee.model';
+import { EmployeeService } from '../service/employee.service';
 
 @Component({
   selector: 'app-edit-employee',
@@ -25,11 +26,12 @@ export class EditEmployeeComponent {
 
   @Output() dataToParent = new EventEmitter<Employee>();
 
-  constructor() {
+  constructor(private employeeService: EmployeeService) {
   }
 
   ngOnInit() {
     this.dataFromParent = this.data;
+    console.log("dataFromParent "+this.data)
     console.log("this is ngOninit");
   }
 
@@ -51,9 +53,21 @@ export class EditEmployeeComponent {
   saveEmployee(){
     // console.log(this.dataFromParent);
     this.dataToParent.emit(this.dataFromParent);
-    this.dataFromParent = false;
-    //send data to the api
 
+    //send data to the api
+    this.updateEmployee(this.dataFromParent.id, this.dataFromParent);
+  }
+  
+  updateEmployee(employeeId: number, employee: Employee){
+    console.log("UPDATE ", employeeId, employee);
+    this.employeeService.updateEmployee(employeeId, employee).subscribe( response => 
+      {
+      alert("updated successfuly");
+      this.dataFromParent = false;
+      }
+    ,
+    error => alert("Update Failed!!")
+    )
   }
 
 
