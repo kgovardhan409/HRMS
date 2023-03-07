@@ -34,14 +34,22 @@ export class EmployeeComponent {
 
     this.employeeService.getEmployees().subscribe( (response) => {
       if(response.status == "success"){
-        this.employees = response.data;
+        this.employees = response.data; //lakhs of employees
       }
     } ,
    (error: any) => {
     console.log("error: ", error);
     this.responseStatusFailure = true;
-   }
+   },
+   // error also success also if you want display some message
+  //  (complete: any) => {
+  //   console.log(complete)
+  //  }
     )
+  }
+
+  ngDestroy(){
+    // this.employeeService.getEmployees.unsubscribe()
   }
 
 
@@ -61,6 +69,24 @@ export class EmployeeComponent {
         }
       })
       this.editEmployeeOpened = false;
+  }
+
+  deleteEmployee(employeeId: number){
+    this.employeeService.deleteEmployee(employeeId).subscribe( 
+      //success
+      response => 
+      {
+      alert("Deleted Successfully!");
+      this.employees = this.employees.filter(
+        v => {
+            return v.id != employeeId;
+          }
+      )
+      console.log(this.employees)
+      },
+      error => alert("Delete Failed!!")
+      
+      )
   }
 
 }

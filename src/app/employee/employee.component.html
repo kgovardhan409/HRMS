@@ -14,13 +14,8 @@
                     <tr>
                         <th>S.No</th>
                         <th>Name</th>
-                         <!-- <th>Date of Joining</th> -->
-                        <!-- <th>Organization</th> -->
                         <th>Salary</th>
                         <th>Age</th>
-                        <!-- <th>Email ID</th> -->
-                        <!-- <th>Phone Number</th> -->
-                        <!-- <th>Address</th> -->
                         <th>Profile Image</th>
                         <th>Action</th>
                     </tr>
@@ -29,19 +24,14 @@
                     <tr *ngFor="let employee of employees; let i = index">
                         <td>{{i+1}}</td>
                         <td [ngClass]="isEmployeeResigned == employee.employee_name ? 'resigned' : 'not-resigned'">{{employee.employee_name}}</td>
-                        <!-- <td>{{employee.joiningDate}}</td>
-                        <td>{{employee.organization}}</td> -->
                         <td *ngIf="employee.employee_salary >= 300000" class="text-success">{{employee.employee_salary}}</td>
                         <td *ngIf="employee.employee_salary < 300000" class="text-danger">{{employee.employee_salary}}</td>
                         <td>{{employee.employee_age}}</td>
-                        <!-- <td>{{employee.emailId}}</td> -->
-                        <!-- <td>{{employee.phoneNumber}}</td> -->
-                        <!-- <td>{{employee.address}}</td> -->
                         <td>{{employee.profile_image}}</td>
                         <td [ngStyle]="{width: isLarge ? '300px': ''}">
                             <button class="btn btn-primary" (click)="editEmployee(employee)">Edit</button>
                             <button class="btn btn-success ms-2" routerLink="/viewEmployee/{{employee.id}}">View</button>
-                            <button class="btn btn-danger ms-2">Delete</button>
+                            <button class="btn btn-danger ms-2" (click)="deleteEmployee(employee.id)" >Delete</button>
                     </tr>
                 </tbody>
             </table>
