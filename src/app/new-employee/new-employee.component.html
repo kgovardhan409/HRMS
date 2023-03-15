@@ -1,12 +1,62 @@
 <div class="container">
     <h1>Add new employee</h1>
-    <div class="row">
-        <div class="col-lg-6">
-            <label for="" class="form-lable">Employee Name</label>
-            <input type="text" placeholder="Enter employee name" class="form-control" 
-            [(ngModel)]="employeeName">
-        </div>
-
-        <div>Employee Name is : {{employeeName}}</div>
+    <div class="">
+        
+        <form #newEmpForm="ngForm" (ngSubmit)="saveEmployee(newEmpForm)">
+            <div class="col-lg-6">
+                <label for="" class="form-lable">Employee Name</label>
+                <input type="text" placeholder="Enter employee name" class="form-control" 
+                [(ngModel)]="employeeObj.employee_name"
+                name="Employee Name"
+                maxlength="20"
+                minlength="3"
+                required=""
+                #empName="ngModel"
+                [ngClass]="empName.errors && isSubmitted ? 'errorClass' : ''"
+                >
+            </div>
+            <div class="text-danger" *ngIf="empName.errors && isSubmitted">
+                Please Enter Employee Name
+            </div>
+    
+            <div class="col-lg-6 mt-3">
+                <label for="" class="form-lable">Employee Age</label>
+                <input type="number" placeholder="Enter employee age" class="form-control" name="Employee Age"
+                [(ngModel)]="employeeObj.employee_age"
+                required=""
+                min="18"
+                #empAge="ngModel"
+                [ngClass]="empAge.errors && isSubmitted ? 'errorClass' : ''"
+                >
+            </div>
+            <div *ngIf='empAge.errors && isSubmitted' class="text-danger">
+                Employee Age is required!
+            </div>
+    
+            <div class="col-lg-6 mt-3">
+                <label for="" class="form-lable">Employee Salary</label>
+                <input type="number" placeholder="Enter Employe Salary" class="form-control" name="Employee Salary"
+                [(ngModel)]="employeeObj.employee_salary"
+                required=""
+                min="200000"
+                #empSalary="ngModel"
+                [ngClass]="empSalary.errors && isSubmitted ? 'errorClass' : ''"
+                >
+            </div>
+            <div *ngIf="empSalary.errors && isSubmitted" class="text-danger">
+                Employee Salary is mandatory!
+            </div>
+    
+            <div class="mt-3">
+                <input type="submit" class="btn btn-primary" Value="Save" >
+            </div>
+        </form>
+        
     </div>
 </div>
+
+
+<!-- form validation
+1. template driven form validation - all our validation logic we will write in our html
+2. reactive form validation - all our validation logic we will write in typescript file / class file
+-->

@@ -1,7 +1,7 @@
 
 
 export interface Employee {
-    id:number;
+    id ?:number;
     employee_name: string;
     employee_age: number;
     organization ?: string;

@@ -1,1 +1,94 @@
-<p>profile works!</p>
+<div class="container m-auto">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-6">
+            <form class="mt-3"  novalidate [formGroup]="profileForm" (ngSubmit)="profileFormSubmit()">
+                <div class="">
+                  <label for="validationCustom01" class="form-label">First name</label>
+                  <input type="text" class="form-control" id="validationCustom01" value="" 
+                  formControlName="firstName"
+                  [ngClass]="isFormSubmitted && myForm['firstName'].errors ? 'errorClass' : ''"
+                  >
+                  <div class="text-danger" *ngIf="isFormSubmitted && myForm['firstName'].errors">
+                    Please enter first name
+                  </div>
+                  <div class="text-success" *ngIf="isFormSubmitted && !myForm['firstName'].errors">
+                    Looks good
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <label for="validationCustom02" class="form-label">Last name</label>
+                  <input type="text" class="form-control" id="validationCustom02" value=""  
+                    formControlName="lastName"
+                    [ngClass]="isFormSubmitted && myForm['lastName'].errors ? 'errorClass' : ''"
+                    >
+                    <div class="text-danger" *ngIf="isFormSubmitted && myForm['lastName'].errors">
+                      Please enter first name
+                    </div>
+                </div>
+                <div class="mt-3">
+                  <label for="validationCustomUsername" class="form-label">Username</label>
+                  <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" 
+                      formControlName="userName"
+                      [ngClass]="isFormSubmitted && myForm['userName'].errors ? 'errorClass' : ''"
+                      >
+                      <div class="text-danger" *ngIf="isFormSubmitted && myForm['userName'].errors">
+                        Please enter first name
+                      </div>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <label for="validationCustom03" class="form-label">City</label>
+                  <input type="text" class="form-control" id="validationCustom03" 
+                  formControlName="city"
+                  [ngClass]="isFormSubmitted && myForm['city'].errors ? 'errorClass' : ''"
+                  >
+                  <div class="text-danger" *ngIf="isFormSubmitted && myForm['city'].errors">
+                    Please enter first name
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <label for="validationCustom04" class="form-label">State</label>
+                  <select class="form-select" id="validationCustom04" 
+                  formControlName="state"
+                  [ngClass]="isFormSubmitted && myForm['state'].errors ? 'errorClass' : ''"
+                  >
+                    <option selected disabled value="">Choose...</option>
+                    <option>...</option>
+                  </select>
+                  
+                  <div class="text-danger" *ngIf="isFormSubmitted && myForm['state'].errors">
+                    Please enter first name
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <label for="validationCustom05" class="form-label">Zip</label>
+                  <input type="text" class="form-control" id="validationCustom05" 
+                  formControlName="zipCode"
+                  [ngClass]="isFormSubmitted && myForm['zipCode'].errors ? 'errorClass' : ''"
+                  >
+                  <div class="text-danger" *ngIf="isFormSubmitted && myForm['zipCode'].errors">
+                    Please enter first name
+                  </div>
+                </div>
+                <div class="col-12 mt-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" 
+                    formControlName="termsAndConditions"[ngClass]="isFormSubmitted && myForm['termsAndConditions'].errors ? 'errorClass' : ''"
+                    >
+                    <div class="text-danger" *ngIf="isFormSubmitted && myForm['termsAndConditions'].errors">
+                      Please enter first name
+                    </div>
+                    <div class="invalid-feedback">
+                      You must agree before submitting.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 mt-5">
+                  <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+              </form>
+        </div>
+    </div>
+</div>
