@@ -74,6 +74,8 @@ export class EmployeeService {
 
   updateEmployeeUrl:string = "https://dummy.restapiexample.com/api/v1/update/";
 
+  createNewEmployeeUrl = "	https://dummy.restapiexample.com/api/v1/create";
+
   constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<any>{
@@ -94,7 +96,13 @@ export class EmployeeService {
   }
 
   updateEmployee(id: number, employee: any): Observable<any> {
+    const url = "";
     return this.http.put(this.updateEmployeeUrl+id, employee);
+  }
+
+
+  createNewEmployee(employeeData: Employee): Observable<any>{
+    return this.http.post(this.createNewEmployeeUrl, employeeData);
   }
 
 }

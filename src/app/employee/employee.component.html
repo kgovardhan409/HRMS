@@ -31,7 +31,7 @@
                         <td [ngStyle]="{width: isLarge ? '300px': ''}">
                             <button class="btn btn-primary" (click)="editEmployee(employee)">Edit</button>
                             <button class="btn btn-success ms-2" routerLink="/viewEmployee/{{employee.id}}">View</button>
-                            <button class="btn btn-danger ms-2" (click)="deleteEmployee(employee.id)" >Delete</button>
+                            <button class="btn btn-danger ms-2" *ngIf="employee.id" (click)="deleteEmployee(employee.id)" >Delete</button>
                     </tr>
                 </tbody>
             </table>
