@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ViewEmployeeComponent } from './view-employee/view-employee.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule(
   {
@@ -27,7 +29,9 @@ import { HttpClientModule } from '@angular/common/http';
     EditEmployeeComponent,
     FooterComponent,
     ProfileComponent,
-    ViewEmployeeComponent
+    ViewEmployeeComponent,
+    LoginComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
