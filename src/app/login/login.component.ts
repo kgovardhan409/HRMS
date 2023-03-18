@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../service/auth.service';
 import { LoginService } from '../service/login.service';
 
 @Component({
@@ -9,7 +10,9 @@ import { LoginService } from '../service/login.service';
 })
 export class LoginComponent {
 
-  constructor(private loginSevice: LoginService, private router: Router){}
+  constructor(private loginSevice: LoginService, private router: Router, 
+              private authService: AuthService      
+    ){}
 
 
   verifyLogin(email: string, password: string){
@@ -19,9 +22,10 @@ export class LoginComponent {
       password: password
     }
 
-    this.loginSevice.checkLogin(loginData, 'govardhan').subscribe(
+    this.loginSevice.checkLogin(loginData).subscribe(
       (resp) => {
         alert("Welcome to HRMS!");
+        this.authService.setLoggedInValue(true);
         this.router.navigateByUrl('dashboards');
       },
       () => {
