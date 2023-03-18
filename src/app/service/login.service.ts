@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor(private http : HttpClient) { }
 
-  checkLogin(loginData: Login, myname: string): Observable<any>{
+  checkLogin(loginData: Login): Observable<any>{
     
     this.httHeaders = {
       header: new HttpHeaders({'content-Type': 'application/json'})
